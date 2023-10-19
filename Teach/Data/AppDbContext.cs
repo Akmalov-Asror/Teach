@@ -13,7 +13,6 @@ public class AppDbContext : IdentityDbContext<User>
     }
 
     public IServiceProvider Services { get; set; }
-
     public DbSet<Student> Students { get; set; }
     public DbSet<Library> Libraries { get; set; }
     public DbSet<Meals> Meals { get; set; }

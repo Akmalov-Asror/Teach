@@ -8,6 +8,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
 using Teach.Data;
 using Teach.Entities;
+using Teach.Middlewares;
 using Teach.Repositories;
 using Teach.Services.JWTService;
 
@@ -89,6 +90,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<GlobalExceptionHandlingMiddlewareConventional>();
 /*app.Use(((context, func) =>
 {
     var token = context.Request.Headers.Authorization;
@@ -99,7 +101,5 @@ app.UseHttpsRedirection();
 
 }));*/
 app.UseAuthorization();
-app.UseAuthorization();
 app.MapControllers();
-//await app.Services.CreateScope().ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>().CreateAsync(new IdentityRole("TEST"));
 app.Run();
